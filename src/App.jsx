@@ -39,15 +39,15 @@ function App() {
 }
 
 function MainLayout() {
-  const { user } = useAuth(); // Verificamos si el usuario está autenticado
+  const { isAuthenticated } = useAuth();
   const location = useLocation();
 
-  // No mostrar Navbar en la pantalla de login y register
+  // No mostrar navbar en login y register
   if (location.pathname === "/login" || location.pathname === "/register") {
     return null;
   }
 
-  return user ? <Navbar2 /> : <Navbar1 />;
+  return isAuthenticated ? <Navbar2 /> : <Navbar1 />;
 }
 
 export default App;

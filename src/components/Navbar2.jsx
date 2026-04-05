@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
@@ -7,19 +8,21 @@ function Navbar2() {
   const { logout, isAuthenticated, user } = useAuth();
 
   return (
-    <nav className="bg-gray-800">
+    <nav className="bg-gradient-to-r from-pink-500 to-purple-600">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
+
           {/* Botón del menú móvil */}
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               type="button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-none"
+              className="relative inline-flex items-center justify-center rounded-md p-2 text-pink-100 hover:bg-purple-700 hover:text-white"
               aria-controls="mobile-menu"
               aria-expanded={menuOpen}
             >
               <span className="sr-only">Open main menu</span>
+
               {menuOpen ? (
                 <svg
                   className="size-6"
@@ -49,11 +52,13 @@ function Navbar2() {
                   />
                 </svg>
               )}
+
             </button>
           </div>
 
           {/* Links del menú */}
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+
             <div className="flex shrink-0 items-center">
               <img
                 className="h-8 w-auto"
@@ -61,33 +66,42 @@ function Navbar2() {
                 alt="Logo"
               />
             </div>
+
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
+
                 <a
                   href="/notes"
-                  className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                  className="rounded-md bg-purple-700 px-3 py-2 text-sm font-medium text-white"
                 >
                   Notes
                 </a>
+
                 <a
                   href="/add-note"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-pink-100 hover:bg-purple-700 hover:text-white"
                 >
                   Create Note
                 </a>
+
               </div>
             </div>
+
           </div>
+
+          {/* Usuario */}
           <div>
-            <h1 className="font-bold rounded-md px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
-              {user.username}
+            <h1 className="font-bold rounded-md px-3 py-2 text-sm text-pink-100 hover:bg-purple-700 hover:text-white">
+              {user?.username}
             </h1>
           </div>
+
           {/* Dropdown del perfil */}
           <div className="relative ml-3">
+
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              className="relative flex rounded-full text-sm"
             >
               <img
                 className="size-8 rounded-full"
@@ -98,9 +112,10 @@ function Navbar2() {
 
             {dropdownOpen && (
               <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5">
+
                 <a
                   href="/profile"
-                  className="block px-4 py-2 text-sm text-gray-700"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-pink-100"
                 >
                   Your Profile
                 </a>
@@ -110,13 +125,16 @@ function Navbar2() {
                   onClick={() => {
                     logout();
                   }}
-                  className="block px-4 py-2 text-sm text-gray-700"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-pink-100"
                 >
                   Sign out
                 </a>
+
               </div>
             )}
+
           </div>
+
         </div>
       </div>
 
@@ -124,21 +142,25 @@ function Navbar2() {
       {menuOpen && (
         <div className="sm:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pt-2 pb-3">
+
             <a
-              href="/"
-              className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+              href="/notes"
+              className="block rounded-md bg-purple-700 px-3 py-2 text-base font-medium text-white"
             >
-              Home
+              Notes
             </a>
+
             <a
-              href="/"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              href="/add-note"
+              className="block rounded-md px-3 py-2 text-base font-medium text-pink-100 hover:bg-purple-700 hover:text-white"
             >
-              About
+              Create Note
             </a>
+
           </div>
         </div>
       )}
+
     </nav>
   );
 }
